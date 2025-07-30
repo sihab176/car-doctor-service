@@ -1,0 +1,70 @@
+"use client";
+import { RegisterUser } from "@/app/actions/auth/RegisterUser";
+
+import React from "react";
+
+const RegisterFrom = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const from = e.target;
+    const name = from.name.value;
+    const email = from.email.value;
+    const password = from.password.value;
+
+    RegisterUser({name, email, password});
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="pb-1 space-y-4">
+      {/* name */}
+      <label className="block">
+        <span className="block mb-1 text-xs font-medium text-gray-700">
+          Your name
+        </span>
+        <input
+          className="form-input border px-8 py-2 w-full"
+          type="text"
+          placeholder="write your name"
+          name="name"
+          required
+        />
+      </label>
+      {/* email */}
+      <label className="block">
+        <span className="block mb-1 text-xs font-medium text-gray-700">
+          Your Email
+        </span>
+        <input
+          className="form-input border px-8 py-2 w-full"
+          type="email"
+          placeholder="Ex. james@bond.com"
+          name="email"
+          required
+        />
+      </label>
+      <label className="block">
+        <span className="block mb-1 text-xs font-medium text-gray-700">
+          Your Password
+        </span>
+        <input
+          className="form-input border px-8 py-2 w-full"
+          type="password"
+          placeholder="••••••••"
+          name="password"
+          required
+        />
+      </label>
+      <div className="flex items-center justify-between">
+        <label className="flex items-center">
+          <input type="checkbox" className="form-checkbox" />
+          <span className="block ml-2 text-xs font-medium text-gray-700 cursor-pointer">
+            Remember me
+          </span>
+        </label>
+        <input type="submit" className="btn btn-primary" value="signup" />
+      </div>
+    </form>
+  );
+};
+
+export default RegisterFrom;

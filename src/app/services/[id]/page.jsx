@@ -2,6 +2,7 @@ import dbConnect from "@/lib/dbConnect";
 import { ObjectId } from "mongodb";
 import Image from "next/image";
 import React from "react";
+import { FaArrowRight } from "react-icons/fa";
 
 const page = async ({ params }) => {
   const id = await params.id;
@@ -11,7 +12,8 @@ const page = async ({ params }) => {
 
   return (
     <div>
-      <section className="relative">
+      {/* banner section */}
+      <section className="relative mb-20">
         <figure className="flex justify-center items-center rounded">
           <Image
             src="/images/checkout/checkout.png"
@@ -36,7 +38,53 @@ const page = async ({ params }) => {
           </div>
         </div>
       </section>
-      {JSON.stringify(singleService)}
+      {/* image section and button section */}
+      <section className="flex  justify-between items-center">
+        <figure className="">
+          <Image
+            src={singleService?.img}
+            width={750}
+            height={200}
+            alt="image"
+          />
+        </figure>
+        {/* buttons */}
+        <div className="gap-10 bg-[#F3F3F3] p-10">
+          <h1 className="text-2xl font-semibold">Services</h1>
+          <button className="px-6 py-2 bg-gray-400  flex justify-between items-center gap-3">
+            Full Car Repair{" "}
+            <span>
+              <FaArrowRight />
+            </span>{" "}
+          </button>
+          <br />
+          <button className="px-6 py-2 bg-gray-400   flex justify-between items-center gap-3">
+            Full Car Repair{" "}
+            <span>
+              <FaArrowRight />
+            </span>{" "}
+          </button>
+          <br />
+          <button className="px-6 py-2 bg-gray-400   flex justify-between items-center gap-3">
+            Full Car Repair{" "}
+            <span>
+              <FaArrowRight />
+            </span>{" "}
+          </button>
+          <br />
+          <button className="px-6 py-2 bg-gray-400   flex justify-between items-center gap-3">
+            Full Car Repair{" "}
+            <span>
+              <FaArrowRight />
+            </span>{" "}
+          </button>
+        </div>
+      </section>
+      <section>
+        <h1 className="text-3xl font-bold">Unique Car Engine Service</h1>
+        <p>{singleService?.description}</p>
+      </section>
+      {/* {JSON.stringify(singleService)} */}
     </div>
   );
 };
