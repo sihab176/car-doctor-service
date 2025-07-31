@@ -1,13 +1,14 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { SlHandbag } from "react-icons/sl";
 import { FaMagnifyingGlass } from "react-icons/fa6";
-
-//! cardoctorsNextJs
-//! hNu0ultQlDhj7lo5
+import { signOut, useSession } from "next-auth/react";
 
 const Navbar = () => {
+  const { data: session, status } = useSession();
+
   const links = (
     <>
       <li>
@@ -70,13 +71,30 @@ const Navbar = () => {
           <ul className=" menu-horizontal gap-10">{links}</ul>
         </div>
         <div className="navbar-end gap-10">
+          <div>
+            <Image
+              className="rounded-full"
+              src={session?.user?.image}
+              alt="Website Logo"
+              width={40}
+              height={40}
+            />
+          </div>
           <p>
             <SlHandbag />
           </p>
           <p>
             <FaMagnifyingGlass />
           </p>
-          <a className="btn">Button</a>
+          {status === "authenticated" ? (
+            <button onClick={() => signOut()} className="btn">
+              sign out
+            </button>
+          ) : (
+            <Link href="/login">
+              <button className="btn">sign in</button>
+            </Link>
+          )}
         </div>
       </div>
     </div>

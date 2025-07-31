@@ -1,12 +1,13 @@
+"use client";
 import React from "react";
 import LoginForm from "./components/LoginForm";
+import SocialLogin from "./components/SocialLogin";
 
 const loginPage = () => {
   return (
     <div>
       <section className="grid grid-cols-1 gap-0 lg:grid-cols-12">
         <div className="w-full col-span-1 p-4 mx-auto mt-6 lg:col-span-4 xl:p-12 sm:w-2/4 lg:w-full">
-         
           <h1 className="mt-6 mb-4 text-xl font-light text-left text-gray-800">
             Log in to your account
           </h1>
@@ -31,6 +32,8 @@ const loginPage = () => {
             >
               Privacy & Terms
             </a>
+            {/* social login */}
+            <SocialLogin />
           </div>
         </div>
         <div className="col-span-1 lg:col-span-8">
