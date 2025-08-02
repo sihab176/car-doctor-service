@@ -2,6 +2,7 @@
 import React from "react";
 import LoginForm from "./components/LoginForm";
 import SocialLogin from "./components/SocialLogin";
+import Link from "next/link";
 
 const loginPage = () => {
   return (
@@ -16,9 +17,9 @@ const loginPage = () => {
           <div className="my-6 space-y-2">
             <p className="text-xs text-gray-600">
               Don't have an account?
-              <a href="#" className="text-purple-700 hover:text-black">
+              <Link href="/register" className="text-purple-700 hover:text-black border-b border-purple-700">
                 Create an account
-              </a>
+              </Link>
             </p>
             <a
               href="#"

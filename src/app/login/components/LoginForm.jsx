@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
   const router = useRouter();
+  //handle login =================================>
   const handleLogin = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -22,16 +23,14 @@ const LoginForm = () => {
     } else {
       router.push("/");
       form.reset();
-      Swal.fire({
-        icon: "success",
-        title: "Your work has been saved",
-        showConfirmButton: false,
-        timer: 1500,
-      });
+      // Swal.fire({
+      //   icon: "success",
+      //   title: "Your work has been saved",
+      //   showConfirmButton: false,
+      //   timer: 1500,
+      // });
     }
   };
-
-  // console.log({ email, password });
 
   return (
     <form onSubmit={handleLogin} className="pb-1 space-y-4">

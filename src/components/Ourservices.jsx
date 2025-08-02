@@ -64,15 +64,12 @@ const Ourservices = async () => {
                 </Link>
               </div>
 
-              <form className="mt-4">
-                {/* <button className="block w-full rounded-sm bg-yellow-400 p-4 text-sm font-medium transition hover:scale-105">
-                  Add to Cart
-                </button> */}
-              </form>
+
             </div>
           </div>
         ))}
       </div>
+   
     </div>
   );
 };

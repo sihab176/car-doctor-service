@@ -63,6 +63,7 @@ const Navbar = () => {
               alt="Website Logo"
               width={70}
               height={10}
+              style={{ width: "40%", height: "auto" }}
             />
             <p className="font-bold">Car Doctor</p>
           </div>
@@ -72,13 +73,19 @@ const Navbar = () => {
         </div>
         <div className="navbar-end gap-10">
           <div>
-            <Image
-              className="rounded-full"
-              src={session?.user?.image}
-              alt="Website Logo"
-              width={40}
-              height={40}
-            />
+            {status === "authenticated" && (
+              <Image
+                className="rounded-full"
+                src={
+                  session?.user?.image ||
+                  "https://i.ibb.co/xS9ZCG4P/profile-2.jpg"
+                }
+                alt="user"
+                width={40}
+                height={40}
+                style={{ width: "100%", height: "auto" }}
+              />
+            )}
           </div>
           <p>
             <SlHandbag />

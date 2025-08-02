@@ -1,5 +1,7 @@
 import React from "react";
 import RegisterFrom from "./components/RegisterFrom";
+import Link from "next/link";
+import SocialLogin from "../login/components/SocialLogin";
 
 const registerPage = () => {
   return (
@@ -15,9 +17,12 @@ const registerPage = () => {
           <div className="my-6 space-y-2">
             <p className="text-xs text-gray-600">
               Don't have an account?
-              <a href="#" className="text-purple-700 hover:text-black">
-                Create an account
-              </a>
+              <Link
+                href="/login"
+                className="text-purple-700 hover:text-black border-b border-purple-700"
+              >
+                login your account
+              </Link>
             </p>
             <a
               href="#"
@@ -31,6 +36,9 @@ const registerPage = () => {
             >
               Privacy & Terms
             </a>
+            <div>
+              <SocialLogin />
+            </div>
           </div>
         </div>
         <div className="col-span-1 lg:col-span-8">

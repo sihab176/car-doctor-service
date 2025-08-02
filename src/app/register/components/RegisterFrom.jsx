@@ -1,17 +1,27 @@
 "use client";
 import { RegisterUser } from "@/app/actions/auth/RegisterUser";
+import { signIn } from "next-auth/react";
 
 import React from "react";
 
 const RegisterFrom = () => {
-  const handleSubmit = (e) => {
+  const handleSubmit =async (e) => {
     e.preventDefault();
     const from = e.target;
     const name = from.name.value;
     const email = from.email.value;
     const password = from.password.value;
 
-    RegisterUser({name, email, password});
+    const res= await  RegisterUser({ name, email, password });
+
+    if(res.success){
+      await signIn("credentials",{
+        redirect: true,
+        email,
+        password,
+        callbackUrl:"/"
+      })
+    }
   };
 
   return (

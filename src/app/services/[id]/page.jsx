@@ -1,14 +1,14 @@
-import dbConnect from "@/lib/dbConnect";
-import { ObjectId } from "mongodb";
+// "use client";
 import Image from "next/image";
-import React from "react";
+import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
 
 const page = async ({ params }) => {
-  const id = await params.id;
-  const singleService = await dbConnect("servisesData").findOne({
-    _id: new ObjectId(id),
+  const p = await params;
+  const res = await fetch(`http://localhost:3000/api/service/${p.id}`, {
+    cache: "force-cache",
   });
+  const singleService = await res.json();
 
   return (
     <div>
@@ -45,39 +45,23 @@ const page = async ({ params }) => {
             src={singleService?.img}
             width={750}
             height={200}
-            alt="image"
+            alt="ima"
+            style={{ width: "100%", height: "auto" }}
           />
         </figure>
         {/* buttons */}
         <div className="gap-10 bg-[#F3F3F3] p-10">
           <h1 className="text-2xl font-semibold">Services</h1>
-          <button className="px-6 py-2 bg-gray-400  flex justify-between items-center gap-3">
-            Full Car Repair{" "}
-            <span>
-              <FaArrowRight />
-            </span>{" "}
-          </button>
           <br />
-          <button className="px-6 py-2 bg-gray-400   flex justify-between items-center gap-3">
-            Full Car Repair{" "}
-            <span>
-              <FaArrowRight />
-            </span>{" "}
-          </button>
+          <Link href={`/checkout/${singleService?._id}`}>
+            <button className="px-6 py-2 bg-orange-400  flex justify-between items-center gap-3">
+              checkout
+              <span>
+                <FaArrowRight />
+              </span>{" "}
+            </button>
+          </Link>
           <br />
-          <button className="px-6 py-2 bg-gray-400   flex justify-between items-center gap-3">
-            Full Car Repair{" "}
-            <span>
-              <FaArrowRight />
-            </span>{" "}
-          </button>
-          <br />
-          <button className="px-6 py-2 bg-gray-400   flex justify-between items-center gap-3">
-            Full Car Repair{" "}
-            <span>
-              <FaArrowRight />
-            </span>{" "}
-          </button>
         </div>
       </section>
       <section>

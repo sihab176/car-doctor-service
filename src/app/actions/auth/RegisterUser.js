@@ -3,7 +3,7 @@ import dbConnect from "@/lib/dbConnect"
 import bcrypt from "bcrypt";
 
 export const RegisterUser=async(payload)=>{
-const userCollection= dbConnect("userInfo")
+const userCollection=await dbConnect("userInfo")
 // validation
 const {email,password}=payload
 if(!email || !password){
@@ -15,8 +15,8 @@ if(!user){
    payload.password= hashPassword
    payload.role="user"
    const result=  await userCollection.insertOne(payload)
-   console.log(result);
-   return result
+   console.log(result , "register result ===============>");
+   return { success: true, insertedId: result.insertedId.toString() };
 }
 return {success : false}
 }
