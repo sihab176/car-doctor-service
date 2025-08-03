@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export const GET =async(req,{params})=>{
   try {
-      const p= await params;
+    const p= await params;
     const result= await dbConnect("servisesData").findOne({_id : new ObjectId(p?.id)})
       if (!result) {
       return NextResponse.json(
