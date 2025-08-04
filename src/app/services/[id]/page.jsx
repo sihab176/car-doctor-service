@@ -5,9 +5,12 @@ import { FaArrowRight } from "react-icons/fa";
 
 const page = async ({ params }) => {
   const p = await params;
-  const res = await fetch(`http://localhost:3000/api/service/${p.id}`, {
-    cache: "force-cache",
-  });
+  const res = await fetch(
+    `https://car-doctor-next-js-blush.vercel.app/api/service/${p.id}`,
+    {
+      cache: "force-cache",
+    }
+  );
   const singleService = await res.json();
 
   return (

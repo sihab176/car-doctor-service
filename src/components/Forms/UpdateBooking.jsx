@@ -29,7 +29,7 @@ const UpdateBooking = ({ data }) => {
 
     console.log(bookingPayload);
     const res = await fetch(
-      `http://localhost:3000/api/my_booking/${data._id}`,
+      `https://car-doctor-next-js-blush.vercel.app/api/my_booking/${data._id}`,
       {
         method: "PATCH",
         body: JSON.stringify(bookingPayload),
@@ -85,7 +85,7 @@ const UpdateBooking = ({ data }) => {
                 className="input input-bordered"
               />
             </div>
-            <div className="form-control">
+            <div className="form-control ">
               <label className="label">
                 <span className="label-text">Date</span>
               </label>

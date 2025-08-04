@@ -32,11 +32,14 @@ const CheckoutForm = ({ data }) => {
       service_price: data.price,
     };
 
-    const res = await fetch("http://localhost:3000/api/bookings", {
-      method: "POST",
+    const res = await fetch(
+      "https://car-doctor-next-js-blush.vercel.app/api/bookings",
+      {
+        method: "POST",
 
-      body: JSON.stringify(bookingPayload),
-    });
+        body: JSON.stringify(bookingPayload),
+      }
+    );
     const postedResponse = await res.json();
     console.log("POSTED DATA", postedResponse);
 

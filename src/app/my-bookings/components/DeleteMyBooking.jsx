@@ -7,7 +7,7 @@ const DeleteMyBooking = ({ id }) => {
   const router = useRouter();
   const handleDelete = async (id) => {
     const DeleteBooking = await fetch(
-      `http://localhost:3000/api/bookings/${id}`,
+      `https://car-doctor-next-js-blush.vercel.app/api/bookings/${id}`,
       {
         method: "DELETE",
       }
